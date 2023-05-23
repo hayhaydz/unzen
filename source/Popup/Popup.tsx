@@ -11,6 +11,7 @@ const Popup: React.FC = () => {
   return (
     <section id="popup">
       <h2>WEB-EXTENSION-STARTER</h2>
+      <p>hello world</p>
       <button
         id="options__button"
         type="button"
@@ -20,7 +21,7 @@ const Popup: React.FC = () => {
       >
         Options Page
       </button>
-      <div className="links__holder">
+      {/* <div className="links__holder">
         <ul>
           <li>
             <button
@@ -47,7 +48,7 @@ const Popup: React.FC = () => {
             </button>
           </li>
         </ul>
-      </div>
+      </div> */}
     </section>
   );
 };
