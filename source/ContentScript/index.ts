@@ -19,4 +19,49 @@
 //   }
 // }, false );
 
+const removeElementByInnerHTMLValue = (parentElement: HTMLElement): void => {
+  const childElements = parentElement.querySelectorAll(':scope > *');
+
+  for (let i = childElements.length - 1; i >= 0; i--) {
+    const element = childElements[i] as HTMLElement;
+
+    if(element.style.display === "none") {
+      continue;
+    }
+
+    switch (element.innerHTML) {
+      case 'Unsplash+':
+      case 'Sponsored': {
+        let parent;
+        if (element.innerHTML === 'Sponsored') {
+          parent = element.closest('div > figure');
+          parent = parent && parent.parentElement;
+        } else {
+          parent = element.closest('figure');
+        }
+
+        if (parent) {
+          parent.dataset.removed = '';
+          parent.style.display = 'none';
+          // parent.style.opacity = '0';
+        }
+        break;
+      }
+
+      default:
+        removeElementByInnerHTMLValue(element);
+        break;
+    }
+  }
+};
+
+const parentElement = document.getElementsByClassName('mItv1');
+if (parentElement) {
+  document.body.addEventListener('DOMNodeInserted', (event) => {
+    let el = (event.target as HTMLElement).closest('figure');
+    if(el === null) el = (event.target as HTMLElement).querySelector('figure');
+    if(el) removeElementByInnerHTMLValue(el);
+  }, false );
+}
+
 export {};

@@ -21,6 +21,34 @@ const Popup: React.FC = () => {
       >
         Options Page
       </button>
+      {/* <div className="links__holder">
+        <ul>
+          <li>
+            <button
+              type="button"
+              onClick={(): Promise<Tabs.Tab> => {
+                return openWebPage(
+                  'https://github.com/abhijithvijayan/web-extension-starter'
+                );
+              }}
+            >
+              GitHub
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onClick={(): Promise<Tabs.Tab> => {
+                return openWebPage(
+                  'https://www.buymeacoffee.com/abhijithvijayan'
+                );
+              }}
+            >
+              Buy Me A Coffee
+            </button>
+          </li>
+        </ul>
+      </div> */}
     </section>
   );
 };
